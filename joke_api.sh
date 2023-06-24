@@ -5,10 +5,9 @@ call_dark_joke_1 () {
 }
 
 call_dark_joke_2 () {
-  curl -s https://v2.jokeapi.dev/joke/Dark?type=twopart | jq -r '.[setup]  .[delivery]'
-}
-
-#TOP_10_STORIES=$(curl -s https://hacker-news.firebaseio.com/v0/topstories.json | jq -r '.[0:10] | .[]')
+  curl -s https://v2.jokeapi.dev/joke/Dark?type=twopart | jq -r '.setup'
+  curl -s https://v2.jokeapi.dev/joke/Dark?type=twopart | jq -r '.delivery'
+} 
 
 call_programming_joke_1 () {
   curl -s https://v2.jokeapi.dev/joke/Programming?type=single | jq -r '.joke'
@@ -16,6 +15,7 @@ call_programming_joke_1 () {
 
 call_programming_joke_2 () {
   curl -s https://v2.jokeapi.dev/joke/Programming?type=twopart | jq -r '.setup'
+  curl -s https://v2.jokeapi.dev/joke/Programming?type=twopart | jq -r '.delivery'
 }
 
 call_misc_joke_1 () {
@@ -24,12 +24,12 @@ call_misc_joke_1 () {
 
 call_misc_joke_2 () {
   curl -s https://v2.jokeapi.dev/joke/Miscellaneous?type=twopart | jq -r '.setup'
+  curl -s https://v2.jokeapi.dev/joke/Miscellaneous?type=twopart | jq -r '.delivery'
 }
 
 call_pun () {
   curl -s https://v2.jokeapi.dev/joke/Pun?type=single | jq -r '.joke'
 }
-
 
 joke () {
 echo -e "What type of joke would you like to hear? \n1:Dark \n2:Programming \n3:Random \n4:Pun"
